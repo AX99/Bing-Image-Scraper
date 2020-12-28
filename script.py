@@ -37,7 +37,6 @@ def start_search():
             print("This image could not be downloaded. Trying next")
             print()
 
+    
+if __name__ == '__main__':
     start_search()
-
-
-start_search()
