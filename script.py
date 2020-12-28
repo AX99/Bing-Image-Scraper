@@ -7,20 +7,22 @@ import os
 
 def start_search():
     search = input("Search for: ")
-    params = {"q": search, "pq": search}
+    sear=search.strip().replace(' ', '+')
+    params = {"q": sear, "pq": sear, "offset": 0, "&first": 2} #offset 0 should give search results from the first page
     dir_name = search.replace(" ", "_").lower()
 
     # Creates a folder for scraped images if there isn't one. The title of the directory is the search term
     if not os.path.isdir(dir_name):
         os.makedirs(dir_name)
 
-    r = requests.get("http://www.bing.com/images/search", params=params)
+    # Request search URL, soup = all text from request, links = finds all 'a' tags with class 'thumb'
+    r = requests.get("https://bing.com/images/search?=", params=params)
 
     soup = BeautifulSoup(r.text, "html.parser")
     links = soup.findAll("a", {"class": "thumb"})
 
     # Use below code to save a copy of the parsed HTML page
-    f = open("test_results.html", "w+")
+    f = open(dir_name+"/"+"test_results_"+ search +".html", "w+")
     f.write(str(soup))
     f.close()
 
