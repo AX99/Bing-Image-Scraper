@@ -1,12 +1,12 @@
 # Bing-Image-Scraper
-A Python script used to download images from Bing Image Search based on the users search term(s)
+A Python script used to download images from Bing Image Search based on the users search term
 
-# Requirements
-Python3
-pip3
+## Requirements
+- Python3
+- pip3
 
 
-# Instructions
+## Instructions
 1. Clone or download this repo
 2. Open terminal or your command to the project folder
 3. Enter the following: 'pip3 install -r requirements.txt'
